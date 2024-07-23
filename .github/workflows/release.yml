@@ -8,9 +8,9 @@ jobs:
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-13, macos-14]
-      fail-fast: false
 
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +28,7 @@ jobs:
       - name: wheels
         run: python -m cibuildwheel --output-dir package
         env:
+          CIBW_PROJECT_REQUIRES_PYTHON: ">=3.10"
           CIBW_SKIP: pp*
 
       - uses: actions/upload-artifact@v4
