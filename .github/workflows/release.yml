@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-13, macos-14]
+        os: [windows-latest]
 
     steps:
       - uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
 
       - name: sdist
         run: python -m build --sdist --outdir package
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'windows-latest'
 
       - name: wheels
         run: python -m cibuildwheel --output-dir package
