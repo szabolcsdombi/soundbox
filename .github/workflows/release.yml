@@ -46,5 +46,5 @@ jobs:
     steps:
       - uses: actions/upload-artifact/merge@v4
         with:
-          name: soundbox-0.2.0
+          name: soundbox-0.3.0
           delete-merged: true
